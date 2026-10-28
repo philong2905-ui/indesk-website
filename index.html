@@ -446,33 +446,38 @@ document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click
 let saved = null;
 try { saved = localStorage.getItem("indesk-lang"); } catch (e) {}
 setLang(saved && (saved === "vi" || T[saved]) ? saved : "vi");
-/* Form gửi về indesk.company@gmail.com qua FormSubmit (cần xác nhận một lần từ hộp thư này). */
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/indesk.company@gmail.com";
+/* Form gửi về indesk.company@gmail.com qua FormSubmit (gửi kiểu biểu mẫu thường, lần đầu cần xác nhận một lần từ hộp thư này). */
+const FORM_ACTION = "https://formsubmit.co/indesk.company@gmail.com";
 const form = document.getElementById("lead-form");
 const show = id => ["f-ok","f-err","f-need"].forEach(x => { document.getElementById(x).hidden = x !== id; });
-form.addEventListener("submit", async e => {
+if (/[?&]sent=1/.test(location.search)) {
+  show("f-ok");
+  document.getElementById("lien-he").scrollIntoView();
+}
+form.addEventListener("submit", e => {
   e.preventDefault();
   const data = Object.fromEntries(new FormData(form));
   if (!data.name.trim() || !data.contact.trim()) { show("f-need"); return; }
   const btn = form.querySelector("button[type=submit]");
   btn.disabled = true;
-  try {
-    const res = await fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        _subject: "Yêu cầu tư vấn mới từ indesk.vn",
-        _template: "table",
-        _captcha: "false",
-        "Họ tên": data.name, "Công ty": data.company, "Liên hệ": data.contact,
-        "Dự án": data.project, "Ngôn ngữ trang": document.documentElement.lang
-      })
-    });
-    if (!res.ok) throw new Error(res.status);
-    form.reset(); show("f-ok");
-  } catch (err) {
-    show("f-err");
-  } finally { btn.disabled = false; }
+  btn.textContent = { vi: "Đang gửi…", en: "Sending…", "zh-CN": "提交中…" }[document.documentElement.lang] || "Đang gửi…";
+  const out = document.createElement("form");
+  out.method = "POST";
+  out.action = FORM_ACTION;
+  out.hidden = true;
+  const fields = {
+    "Họ tên": data.name, "Công ty": data.company, "Liên hệ": data.contact, "Dự án": data.project,
+    "Ngôn ngữ trang": document.documentElement.lang,
+    _subject: "Yêu cầu tư vấn mới từ indesk.vn", _template: "table", _captcha: "false",
+    _next: location.origin + location.pathname + "?sent=1"
+  };
+  for (const [k, v] of Object.entries(fields)) {
+    const i = document.createElement("input");
+    i.type = "hidden"; i.name = k; i.value = v || "";
+    out.appendChild(i);
+  }
+  document.body.appendChild(out);
+  out.submit();
 });
 </script>
 </body>

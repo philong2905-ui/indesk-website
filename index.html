@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>INDESK</title>
+<meta property="og:title" content="INDESK – Tư vấn thiết kế & cấp phép xây dựng nhà công nghiệp">
+<meta property="og:image" content="https://indesk.vn/dongtai.jpg">
+<meta name="description" content="INDESK – Tư vấn thiết kế & cấp phép xây dựng nhà công nghiệp tại Bắc Ninh. Industrial Design · Permit · Project Management.">
+<link rel="icon" type="image/png" href="favicon-64.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: INDESK Brand Guideline V1.0 — navy header + blueprint hero, off-white body, 8px rhythm, left-aligned 12-col feel, one gold accent per view. */
+:root{
+  --charcoal:#0F1115; --navy:#0D1B2A; --navy-2:#13263a; --gold:#C89D3C; --gray:#E5E7EB; --offwhite:#F7F8FA;
+  --ink:#0F1115; --ink-2:#4B5563; --rule:#D3D6DC; --on-dark:#F7F8FA; --on-dark-2:#A7B0BE;
+  --f-head:"Montserrat",system-ui,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --f-body:"Inter",system-ui,Arial,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --wrap:1160px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--offwhite);color:var(--ink);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-head);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.55rem,1.2rem + 1.4vw,2.1rem);font-weight:700}
+h3{font-size:1.1rem;font-weight:600;line-height:1.25}
+p{margin:0}
+.label{font:600 .74rem/1.3 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.label.gold{color:var(--gold)}
+.marker{display:flex;align-items:center;gap:12px}
+.marker::before{content:"";width:24px;height:2px;background:var(--gold);transform:skewX(-35deg)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--navy);color:var(--on-dark);border-bottom:1px solid rgba(255,255,255,.08)}
+.bar{display:flex;align-items:center;gap:24px;min-height:72px}
+.logo{display:block;line-height:0;padding-block:16px}
+.logo img{height:40px;width:auto}
+nav.main{display:flex;gap:24px;margin-left:auto}
+nav.main a{text-decoration:none;font-size:.92rem;color:var(--on-dark-2)}
+nav.main a:hover{color:var(--on-dark)}
+.lang{display:flex;border:1px solid rgba(255,255,255,.2)}
+.lang button{all:unset;cursor:pointer;padding:7px 10px;font:600 .74rem/1 var(--f-body);color:var(--on-dark-2);letter-spacing:.06em}
+.lang button[aria-pressed="true"]{background:var(--gold);color:var(--navy)}
+.lang button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (max-width:860px){nav.main{display:none}.lang{margin-left:auto}}
+@media (max-width:420px){.logo img{height:32px}}
+
+/* hero */
+.hero{background:var(--navy);color:var(--on-dark);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(229,231,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(229,231,235,.05) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center;padding-block:72px 64px}
+.hero h1{font-size:clamp(2rem,1.3rem + 2.6vw,3.25rem);font-weight:700;line-height:1.1;margin:16px 0 20px}
+.hero .lead{color:var(--on-dark-2);font-size:1.06rem;max-width:34em}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;font:600 .95rem/1 var(--f-body);text-decoration:none;border:1.5px solid var(--gold);cursor:pointer}
+.btn.primary{background:var(--gold);color:var(--navy)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{color:var(--on-dark);background:transparent;border-color:rgba(255,255,255,.3)}
+.btn.ghost:hover{border-color:var(--gold)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:.88rem;color:var(--on-dark-2)}
+.facts b{color:var(--on-dark);font-weight:600}
+.hero-img{margin:0;position:relative;min-width:0}
+.hero-img img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;max-width:100%}
+.hero-img::before{content:"";position:absolute;inset:0;background:var(--navy);opacity:.12;pointer-events:none}
+.hero-img::after{content:"";position:absolute;left:-1px;top:-1px;width:48px;height:48px;border-left:2px solid var(--gold);border-top:2px solid var(--gold)}
+.hero-img figcaption{margin-top:12px;font-size:.8rem;color:var(--on-dark-2)}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-block:48px 44px;gap:40px}}
+
+/* sections */
+section.band{padding-block:88px}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:end;margin-bottom:48px}
+.head .marker{margin-bottom:14px}
+.head p{color:var(--ink-2);max-width:34em}
+@media (max-width:760px){.head{grid-template-columns:1fr;gap:14px}section.band{padding-block:64px}}
+
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--navy)}
+.svc{padding:28px 28px 28px 0;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:14px;min-width:0}
+.svc+.svc{padding-left:28px}
+.svc:last-child{border-right:0}
+.svc .no{font:700 .9rem/1 var(--f-head);color:var(--gold)}
+.svc .en{font:600 .72rem/1.3 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.svc ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem;color:var(--ink-2)}
+.svc li{padding-left:16px;position:relative}
+.svc li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:1px;background:var(--navy)}
+.partner{margin-top:28px;padding:16px 20px;background:var(--gray);font-size:.92rem;color:var(--ink-2)}
+@media (max-width:900px){.services{grid-template-columns:1fr}.svc,.svc+.svc{padding:24px 0;border-right:0;border-bottom:1px solid var(--rule)}}
+
+.process-band{background:var(--gray)}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));counter-reset:s;position:relative}
+ol.steps::before{content:"";position:absolute;left:0;right:0;top:19px;height:1px;background:var(--navy);opacity:.3}
+ol.steps li{counter-increment:s;padding-right:20px;position:relative;min-width:0}
+ol.steps li::before{content:counter(s,decimal-leading-zero);display:grid;place-items:center;width:40px;height:40px;background:var(--navy);color:var(--gold);font:700 .82rem/1 var(--f-head);margin-bottom:20px;position:relative}
+ol.steps li:last-child::before{background:var(--gold);color:var(--navy)}
+ol.steps .en{font:600 .72rem/1.3 var(--f-body);letter-spacing:.14em;color:var(--ink-2);margin-bottom:6px}
+ol.steps h3{font-size:1rem;margin-bottom:8px}
+ol.steps p{font-size:.9rem;color:var(--ink-2)}
+.motto{margin-top:40px;font:600 .8rem/1.4 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+@media (max-width:960px){ol.steps{grid-template-columns:1fr}ol.steps::before{left:19px;right:auto;top:0;bottom:0;width:1px;height:auto}ol.steps li{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:20px;padding:0 0 28px}ol.steps li::before{margin:0;grid-row:span 3}}
+
+/* project gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
+.card{margin:0;min-width:0;display:flex;flex-direction:column}
+.card img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;max-width:100%;background:var(--gray)}
+.card .meta{padding-top:14px;border-bottom:1px solid var(--rule);padding-bottom:14px;flex:1}
+.card h3{font-size:1rem}
+.card p{margin-top:6px;font-size:.88rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.badge{display:inline-block;margin-bottom:8px;font:600 .68rem/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--navy);border:1px solid var(--navy);padding:5px 7px}
+.also{margin-top:24px;font-size:.92rem;color:var(--ink-2)}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.gallery{grid-template-columns:1fr}}
+.note{margin-top:16px;font-size:.85rem;color:var(--ink-2);max-width:60em}
+.concepts{margin-top:48px}
+.concepts h3{margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{border:1px solid var(--rule);background:#fff;padding:8px 12px;font-size:.88rem}
+.chips li span{color:var(--ink-2)}
+
+.area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.area p.lead{color:var(--ink-2);margin-top:16px;max-width:30em}
+.zones{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.zones li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.zones .name{font:600 1.05rem/1.3 var(--f-head)}
+.zones .tag{font:600 .7rem/1.2 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.zones li.focus .tag{color:var(--navy)}
+@media (max-width:820px){.area{grid-template-columns:1fr;gap:32px}}
+
+.why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.why div{min-width:0;display:flex;flex-direction:column;gap:10px;padding-top:18px;border-top:1px solid var(--navy)}
+.why .en{font:600 .7rem/1.3 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.why p{color:var(--ink-2);font-size:.95rem}
+@media (max-width:900px){.why{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.why{grid-template-columns:1fr}}
+
+.contact{background:var(--navy);color:var(--on-dark)}
+.contact .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px}
+.contact h2{margin:14px 0 16px}
+.contact .lead{color:var(--on-dark-2);max-width:30em}
+dl.info{margin:36px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 20px;font-size:.95rem}
+dl.info dt{font:600 .7rem/1.9 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+dl.info dd{margin:0;color:var(--on-dark);overflow-wrap:anywhere}
+dl.info dd a{text-decoration:none;border-bottom:1px solid rgba(200,157,60,.6)}
+dl.info dd a:hover{color:var(--gold)}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--navy-2);padding:28px;border:1px solid rgba(255,255,255,.08)}
+form .full{grid-column:1/-1}
+label{display:block;font-size:.82rem;color:var(--on-dark-2);margin-bottom:6px}
+input,textarea{width:100%;font:inherit;color:var(--on-dark);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.2);padding:11px 12px;border-radius:0}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:96px;resize:vertical}
+form .btn{justify-self:start}
+.form-note{font-size:.85rem;color:var(--on-dark-2)}
+@media (max-width:820px){.contact .grid{grid-template-columns:1fr;gap:40px}form{grid-template-columns:1fr;padding:22px}}
+
+footer{background:var(--charcoal);color:var(--on-dark-2);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-block:32px}
+footer img{height:56px;width:auto}
+footer .legal{display:grid;gap:4px;text-align:right}
+@media (max-width:640px){footer .legal{text-align:left}}
+</style>
+<style>[hidden]{display:none!important} img{max-width:100%}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top"><img src="logo-header.png" alt="INDESK" width="600" height="127"></a>
+    <nav class="main" aria-label="Menu">
+      <a href="#dich-vu" data-i18n="nav.services">Dịch vụ</a>
+      <a href="#quy-trinh" data-i18n="nav.process">Quy trình</a>
+      <a href="#kinh-nghiem" data-i18n="nav.projects">Kinh nghiệm</a>
+      <a href="#lien-he" data-i18n="nav.contact">Liên hệ</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-vi" data-lang="vi" aria-pressed="true">VI</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" id="lang-zh" data-lang="zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="label gold marker">Industrial Design · Permit · Project Management</div>
+      <h1 data-i18n="hero.title">Tư vấn thiết kế &amp; cấp phép xây dựng nhà công nghiệp</h1>
+      <p class="lead" data-i18n="hero.lead">Một đầu mối cho dự án nhà máy, nhà xưởng tại các khu và cụm công nghiệp. INDESK kết nối thiết kế, thủ tục cấp phép và quản lý dự án trong một quy trình thống nhất, để chủ đầu tư nhìn rõ công việc, trách nhiệm và lộ trình ngay từ đầu.</p>
+      <div class="actions">
+        <a class="btn primary" href="#lien-he" data-i18n="hero.cta">Đặt lịch tư vấn 30 phút</a>
+        <a class="btn ghost" href="#kinh-nghiem" data-i18n="hero.cta2">Xem kinh nghiệm dự án</a>
+      </div>
+      <div class="facts">
+        <span><b>Hiệp Hòa, Bắc Ninh</b></span>
+        <span><b>VI · EN · 中文</b></span>
+        <span><b>0823 591 888</b></span>
+      </div>
+    </div>
+    <figure class="hero-img">
+      <img src="dongtai.jpg" alt="Phối cảnh Nhà máy Dongtai Việt Nam, 10 ha" width="1600" height="902">
+      <figcaption><span data-i18n="hero.cap">Phối cảnh 3D</span> · Nhà máy Dongtai Việt Nam · 10 ha</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band" id="dich-vu">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="label marker" data-i18n="services.eyebrow">Năng lực cốt lõi</div><h2 data-i18n="services.title">Một đầu mối. Ba năng lực.</h2></div>
+      <p data-i18n="services.lead">Thiết kế, thủ tục và quản lý dự án được phối hợp ngay từ đầu để giảm xung đột và dự án sẵn sàng triển khai sớm hơn.</p>
+    </div>
+    <div class="services">
+      <div class="svc"><span class="no">01</span><span class="en">Industrial Design</span><h3 data-i18n="s1.t">Thiết kế công trình công nghiệp</h3>
+        <ul><li data-i18n="s1.a">Concept và nghiên cứu phương án</li><li data-i18n="s1.b">Quy hoạch tổng mặt bằng</li><li data-i18n="s1.c">Kiến trúc nhà xưởng, kho và văn phòng</li><li data-i18n="s1.d">Phối hợp kiến trúc, kết cấu, cơ điện</li><li data-i18n="s1.e">Diễn họa 3D</li></ul></div>
+      <div class="svc"><span class="no">02</span><span class="en">Permit Management</span><h3 data-i18n="s2.t">Quản lý thủ tục cấp phép</h3>
+        <ul><li data-i18n="s2.a">Rà soát lộ trình pháp lý</li><li data-i18n="s2.b">Điều phối hồ sơ quy hoạch và cấp phép</li><li data-i18n="s2.c">Theo dõi chỉnh sửa, bổ sung, phản hồi</li><li data-i18n="s2.d">Cập nhật trạng thái cho chủ đầu tư</li></ul></div>
+      <div class="svc"><span class="no">03</span><span class="en">Project Management</span><h3 data-i18n="s3.t">Quản lý dự án</h3>
+        <ul><li data-i18n="s3.a">Xác định phạm vi, đầu việc và trách nhiệm</li><li data-i18n="s3.b">Lập và theo dõi kế hoạch triển khai</li><li data-i18n="s3.c">Điều phối chủ đầu tư, tư vấn và đối tác</li><li data-i18n="s3.d">Kiểm soát thay đổi ảnh hưởng tiến độ</li></ul></div>
+    </div>
+    <p class="partner" data-i18n="services.partner">PCCC, môi trường và các nội dung có điều kiện chuyên ngành được thực hiện cùng tổ chức, chuyên gia đủ điều kiện, dưới một đầu mối điều phối là INDESK.</p>
+  </div>
+</section>
+
+<section class="band process-band" id="quy-trinh">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="label marker" data-i18n="process.eyebrow">Quy trình làm việc</div><h2 data-i18n="process.title">Từ concept đến construction</h2></div>
+      <p data-i18n="process.lead">Một quy trình, một luồng thông tin, một mục tiêu triển khai. Lộ trình chi tiết và thời gian từng bước được lập sau buổi khảo sát đầu tiên.</p>
+    </div>
+    <ol class="steps">
+      <li><div class="en">UNDERSTAND</div><h3 data-i18n="p1.t">Hiểu dự án</h3><p data-i18n="p1.d">Mục tiêu đầu tư, vận hành và điều kiện khu đất.</p></li>
+      <li><div class="en">DEFINE</div><h3 data-i18n="p2.t">Xác định</h3><p data-i18n="p2.d">Phạm vi, lộ trình, đầu mối và kế hoạch.</p></li>
+      <li><div class="en">DESIGN</div><h3 data-i18n="p3.t">Thiết kế</h3><p data-i18n="p3.d">Phương án, tổng mặt bằng và kỹ thuật.</p></li>
+      <li><div class="en">COORDINATE</div><h3 data-i18n="p4.t">Điều phối</h3><p data-i18n="p4.d">Hồ sơ, chuyên gia và yêu cầu pháp lý.</p></li>
+      <li><div class="en">DELIVER</div><h3 data-i18n="p5.t">Bàn giao</h3><p data-i18n="p5.d">Đầu ra theo giai đoạn và kiểm soát thay đổi.</p></li>
+    </ol>
+    <p class="motto" data-i18n="process.motto">Đúng phạm vi · Rõ trách nhiệm · Kiểm soát thay đổi</p>
+  </div>
+</section>
+
+<section class="band" id="kinh-nghiem">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="label marker" data-i18n="exp.eyebrow">Kinh nghiệm dự án</div><h2 data-i18n="exp.title">Dự án đã tham gia</h2></div>
+      <p data-i18n="exp.lead">Nhà máy, khu và cụm công nghiệp tại Bắc Ninh, Bắc Giang và các tỉnh lân cận, quy mô từ 0,27 ha đến hơn 120 ha.</p>
+    </div>
+    <div class="gallery">
+      <article class="card"><img src="kcn-quangchau-sm.jpg" alt="Phối cảnh KCN Quang Châu 2" loading="lazy" width="800" height="532"><div class="meta"><h3>KCN Quang Châu 2</h3><p>Bắc Ninh · 2026 · 123,49 ha</p></div></article>
+      <article class="card"><img src="ccn-quangchau-sm.jpg" alt="Phối cảnh CCN Quang Châu" loading="lazy" width="800" height="600"><div class="meta"><h3>Quy hoạch chi tiết CCN Quang Châu</h3><p>Bắc Giang · 2026 · 60 ha</p></div></article>
+      <article class="card"><img src="dongtai-sm.jpg" alt="Phối cảnh Nhà máy Dongtai Việt Nam" loading="lazy" width="800" height="451"><div class="meta"><h3>Nhà máy Dongtai Việt Nam</h3><p>Bắc Giang · 2025 · 10 ha</p></div></article>
+      <article class="card"><img src="quanghung-sm.jpg" alt="Phối cảnh Nhà máy may Quảng Hưng" loading="lazy" width="800" height="450"><div class="meta"><h3>Nhà máy may Quảng Hưng</h3><p>Quảng Trị · 2025 · 4,5 ha</p></div></article>
+      <article class="card"><img src="daithang-sm.jpg" alt="Phối cảnh Nhà máy gỗ Đại Thắng" loading="lazy" width="800" height="543"><div class="meta"><h3>Nhà máy gỗ Đại Thắng</h3><p>Bắc Ninh · 2026 · 2,21 ha</p></div></article>
+      <article class="card"><img src="vinahan-sm.jpg" alt="Phối cảnh Nhà máy Vinahan" loading="lazy" width="800" height="451"><div class="meta"><h3>Nhà máy Vinahan</h3><p>Bắc Giang · 2026 · 1,41 ha</p></div></article>
+      <article class="card"><img src="namchau-sm.jpg" alt="Phối cảnh Nhà máy may Năm Châu" loading="lazy" width="800" height="534"><div class="meta"><h3>Nhà máy may Năm Châu</h3><p>Bắc Ninh · 2026 · 1,18 ha</p></div></article>
+      <article class="card"><img src="hopduc-sm.jpg" alt="Phối cảnh Nhà máy gỗ Hợp Đức" loading="lazy" width="800" height="451"><div class="meta"><h3>Nhà máy gỗ Hợp Đức</h3><p>Bắc Ninh · 2025 · 1,08 ha</p></div></article>
+      <article class="card concept"><img src="mega-sm.jpg" alt="Phối cảnh concept Nhà máy Mega Hải Phòng" loading="lazy" width="800" height="532"><div class="meta"><span class="badge">Concept study</span><h3>Nhà máy Mega Hải Phòng</h3><p>Hải Phòng · 2025 · 10 ha</p></div></article>
+    </div>
+    <p class="also"><span data-i18n="exp.also">Cùng các dự án:</span> Xăng dầu – TM DV Yên Lư (Bắc Giang · 2025 · 0,28 ha) · Cửa hàng xăng dầu Cao Xá (Bắc Giang · 2025 · 0,27 ha)</p>
+    <p class="note" data-i18n="exp.note">Các dự án thể hiện kinh nghiệm tham gia hoặc hỗ trợ của người sáng lập và cộng sự nòng cốt; không mặc định là hợp đồng do pháp nhân INDESK trực tiếp thực hiện.</p>
+    <div class="concepts">
+      <h3 data-i18n="exp.concept">Nghiên cứu concept</h3>
+      <ul class="chips">
+        <li>Nhà máy Mega Hải Phòng <span>· 10 ha</span></li>
+        <li>Mở rộng nhà máy Yongxinan <span>· 4,14 ha</span></li>
+        <li>Nhà máy 01, 02, 03 <span>· Bắc Ninh</span></li>
+        <li>Khu thể thao Đa Mai</li>
+        <li>TTTM &amp; dịch vụ Đại Lâm</li>
+        <li>TTTM Hồng Thái</li>
+        <li>Quy hoạch chi tiết Nhân Hòa</li>
+        <li>Sun Hà Nam Urban</li>
+      </ul>
+      <p class="note" data-i18n="exp.cnote">Phương án nghiên cứu concept, không phải công trình đã hoàn thành hoặc phương án đã được phê duyệt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="dia-ban" style="padding-top:0">
+  <div class="wrap area">
+    <div>
+      <div class="label marker" data-i18n="area.eyebrow">Địa bàn</div>
+      <h2 data-i18n="area.title" style="margin-top:14px">Địa bàn ưu tiên</h2>
+      <p class="lead" data-i18n="area.lead">Văn phòng INDESK đặt tại Hiệp Hòa, gần các khu công nghiệp mới của Bắc Ninh, nên đội ngũ có mặt tại công trường nhanh.</p>
+    </div>
+    <ul class="zones">
+      <li class="focus"><span class="name" data-i18n="z1">KCN Hòa Yên</span><span class="tag" data-i18n="z.tag1">Trọng điểm</span></li>
+      <li class="focus"><span class="name" data-i18n="z2">CCN Danh Thắng – Đoan Bái</span><span class="tag" data-i18n="z.tag1">Trọng điểm</span></li>
+      <li><span class="name" data-i18n="z3">Các KCN, CCN khác tại Bắc Ninh</span><span class="tag" data-i18n="z.tag2">Toàn tỉnh</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band process-band">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="label marker" data-i18n="why.eyebrow">Vì sao chọn INDESK</div><h2 data-i18n="why.title">Giá trị thể hiện trong cách làm việc</h2></div>
+    </div>
+    <div class="why">
+      <div><span class="en">Focus on Solution</span><h3 data-i18n="w1.t">Tập trung giải pháp</h3><p data-i18n="w1.d">Giải pháp khả thi, rõ quyết định và có khả năng triển khai.</p></div>
+      <div><span class="en">Reliable &amp; Responsible</span><h3 data-i18n="w2.t">Tin cậy, trách nhiệm</h3><p data-i18n="w2.d">Minh bạch phạm vi, trách nhiệm và trạng thái công việc.</p></div>
+      <div><span class="en">Professional Execution</span><h3 data-i18n="w3.t">Triển khai chuyên nghiệp</h3><p data-i18n="w3.d">Tổ chức có hệ thống, đầu ra nhất quán.</p></div>
+      <div><span class="en">Value Creation</span><h3 data-i18n="w4.t">Tạo giá trị</h3><p data-i18n="w4.d">Hướng đến tiến độ, chất lượng và sự sẵn sàng triển khai.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="lien-he">
+  <div class="wrap grid">
+    <div>
+      <div class="label gold marker" data-i18n="contact.eyebrow">Liên hệ</div>
+      <h2 data-i18n="contact.title">Bắt đầu bằng một buổi trao đổi rõ ràng</h2>
+      <p class="lead" data-i18n="contact.lead">Mỗi dự án bắt đầu từ việc hiểu đúng mục tiêu, điều kiện thực tế và bước tiếp theo. Buổi tư vấn đầu tiên 30 phút, miễn phí.</p>
+      <dl class="info">
+        <dt data-i18n="i.addr">Địa chỉ</dt><dd>Số 50, đường Lý Thường Kiệt, xã Hiệp Hòa, tỉnh Bắc Ninh</dd>
+        <dt data-i18n="i.phone">Điện thoại</dt><dd><a href="tel:+84823591888">0823 591 888</a></dd>
+        <dt>Email</dt><dd><a href="mailto:indesk.company@gmail.com">indesk.company@gmail.com</a></dd>
+        <dt data-i18n="i.tax">MST</dt><dd>2401090438</dd>
+      </dl>
+    </div>
+    <form id="lead-form" novalidate>
+      <div><label for="f-name" data-i18n="f.name">Họ tên</label><input id="f-name" name="name" autocomplete="name"></div>
+      <div><label for="f-company" data-i18n="f.company">Công ty</label><input id="f-company" name="company" autocomplete="organization"></div>
+      <div class="full"><label for="f-contact" data-i18n="f.contact">Điện thoại hoặc email</label><input id="f-contact" name="contact"></div>
+      <div class="full"><label for="f-project" data-i18n="f.project">Khu công nghiệp &amp; diện tích đất</label><textarea id="f-project" name="project"></textarea></div>
+      <button class="btn primary" type="submit" data-i18n="f.submit">Gửi yêu cầu</button>
+      <p class="form-note full" id="f-ok" hidden data-i18n="f.ok">Đã gửi. INDESK sẽ liên hệ lại với bạn để hẹn lịch.</p>
+      <p class="form-note full" id="f-err" hidden data-i18n="f.err">Chưa gửi được. Bạn gọi 0823 591 888 hoặc email indesk.company@gmail.com giúp INDESK.</p>
+      <p class="form-note full" id="f-need" hidden data-i18n="f.need">Bạn điền giúp họ tên và số điện thoại hoặc email.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-full.png" alt="INDESK – From Concept to Construction" width="1200" height="253">
+    <div class="legal">
+      <span data-i18n="footer.name">Công ty TNHH Tư vấn Đầu tư và Xây dựng INDESK</span>
+      <span>MST 2401090438 · indesk.vn</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    "nav.services":"Services","nav.process":"Process","nav.projects":"Experience","nav.contact":"Contact",
+    "hero.title":"Industrial building design & construction permitting",
+    "hero.lead":"One point of contact for factory and warehouse projects in industrial parks and clusters. INDESK connects design, permitting and project management in one coordinated process, so investors see the work, the responsibilities and the route from day one.",
+    "hero.cta":"Book a 30-minute consultation","hero.cta2":"See project experience",
+    "services.eyebrow":"Core services","services.title":"One point of contact. Three capabilities.",
+    "services.lead":"Design, approvals and project management are coordinated from the start, reducing conflicts and getting projects ready to build sooner.",
+    "s1.t":"Industrial building design","s1.a":"Concept and option studies","s1.b":"Site master planning","s1.c":"Architecture for factories, warehouses and offices","s1.d":"Architecture, structure and MEP coordination","s1.e":"3D visualisation",
+    "s2.t":"Permit management","s2.a":"Legal route review","s2.b":"Coordinating planning and permit files","s2.c":"Tracking revisions, requests and responses","s2.d":"Status updates for the investor",
+    "s3.t":"Project management","s3.a":"Defining scope, tasks and responsibilities","s3.b":"Planning and tracking delivery","s3.c":"Coordinating investor, consultants and partners","s3.d":"Controlling changes that affect the schedule",
+    "services.partner":"Fire safety, environmental and other licensed specialist work is carried out with qualified firms and experts, coordinated by INDESK as your single point of contact.",
+    "process.eyebrow":"How we work","process.title":"From concept to construction",
+    "process.lead":"One process, one flow of information, one delivery goal. A detailed route with timing for each step is prepared after the first site survey.",
+    "p1.t":"Understand","p1.d":"Investment goals, operations and site conditions.",
+    "p2.t":"Define","p2.d":"Scope, route, contacts and plan.",
+    "p3.t":"Design","p3.d":"Options, master plan and engineering.",
+    "p4.t":"Coordinate","p4.d":"Documents, specialists and legal requirements.",
+    "p5.t":"Deliver","p5.d":"Staged outputs and change control.",
+    "process.motto":"Right scope · Clear responsibility · Controlled change",
+    "exp.eyebrow":"Project experience","exp.title":"Projects we have worked on",
+    "exp.lead":"Factories, industrial parks and clusters in Bac Ninh, Bac Giang and nearby provinces, from 0.27 ha to over 120 ha.",
+    "t.name":"Project","t.place":"Location","t.year":"Completed","t.area":"Site area",
+    "exp.note":"Projects reflect work the founder and core collaborators took part in or supported; they are not necessarily contracts signed by the INDESK legal entity.",
+    "exp.concept":"Concept studies","exp.cnote":"Concept study options, not completed or approved projects.",
+    "area.eyebrow":"Coverage","area.title":"Where we work",
+    "area.lead":"INDESK's office is in Hiep Hoa, close to Bac Ninh's new industrial parks, so our team reaches your site quickly.",
+    "z1":"Hoa Yen Industrial Park","z2":"Danh Thang – Doan Bai Industrial Cluster","z3":"Other industrial parks and clusters in Bac Ninh","z.tag1":"Focus","z.tag2":"Province-wide",
+    "why.eyebrow":"Why INDESK","why.title":"Values you see in how we work",
+    "w1.t":"Solution first","w1.d":"Feasible solutions, clear decisions, ready to build.",
+    "w2.t":"Reliable and responsible","w2.d":"Transparent scope, responsibilities and status.",
+    "w3.t":"Professional execution","w3.d":"Systematic organisation and consistent outputs.",
+    "w4.t":"Value creation","w4.d":"Focused on schedule, quality and readiness to build.",
+    "contact.eyebrow":"Contact","contact.title":"Start with a clear project conversation",
+    "contact.lead":"Every project starts with understanding the goals, the real conditions and the next step. The first 30-minute consultation is free.",
+    "i.addr":"Address","i.phone":"Phone","i.tax":"Tax code",
+    "f.name":"Name","f.company":"Company","f.contact":"Phone or email","f.project":"Industrial park & land area","f.submit":"Send request",
+    "f.ok":"Sent. INDESK will contact you to arrange a time.",
+    "f.err":"Couldn't send. Please call 0823 591 888 or email indesk.company@gmail.com.",
+    "f.need":"Please enter your name and a phone number or email.",
+    "hero.cap":"3D rendering","exp.also":"Also:",
+    "footer.name":"INDESK Investment Consulting and Construction Co., Ltd."
+  },
+  zh: {
+    "nav.services":"服务","nav.process":"流程","nav.projects":"项目经验","nav.contact":"联系我们",
+    "hero.title":"工业厂房设计与建设许可咨询",
+    "hero.lead":"为工业园区及工业集群内的工厂、厂房项目提供一站式对接。INDESK将设计、许可手续和项目管理整合为统一流程，让投资者从一开始就清楚工作内容、责任分工和推进路线。",
+    "hero.cta":"预约30分钟咨询","hero.cta2":"查看项目经验",
+    "services.eyebrow":"核心服务","services.title":"一个对接窗口，三大能力",
+    "services.lead":"设计、审批和项目管理从一开始就协同推进，减少冲突，让项目更早具备开工条件。",
+    "s1.t":"工业建筑设计","s1.a":"概念及方案研究","s1.b":"总平面规划","s1.c":"厂房、仓库及办公楼建筑设计","s1.d":"建筑、结构及机电协调","s1.e":"3D效果图",
+    "s2.t":"许可手续管理","s2.a":"审查法定审批路线","s2.b":"协调规划及许可资料","s2.c":"跟踪修改、补充及反馈","s2.d":"向投资者更新进展",
+    "s3.t":"项目管理","s3.a":"明确范围、工作内容及责任","s3.b":"制定并跟踪实施计划","s3.c":"协调投资者、顾问及合作方","s3.d":"控制影响进度的变更",
+    "services.partner":"消防、环保及其他需专业资质的工作，由具备资质的单位和专家完成，并由INDESK统一协调对接。",
+    "process.eyebrow":"工作流程","process.title":"从概念到施工",
+    "process.lead":"一个流程，一条信息流，一个实施目标。首次现场考察后，我们将制定包含各步骤时间的详细路线。",
+    "p1.t":"了解","p1.d":"投资目标、运营需求及场地条件。",
+    "p2.t":"界定","p2.d":"范围、路线、对接人及计划。",
+    "p3.t":"设计","p3.d":"方案、总平面及技术设计。",
+    "p4.t":"协调","p4.d":"资料、专家及法定要求。",
+    "p5.t":"交付","p5.d":"分阶段成果及变更控制。",
+    "process.motto":"范围准确 · 责任清晰 · 变更可控",
+    "exp.eyebrow":"项目经验","exp.title":"参与过的项目",
+    "exp.lead":"位于北宁、北江及周边省份的工厂、工业园区及工业集群，规模从0.27公顷到120余公顷。",
+    "t.name":"项目","t.place":"地点","t.year":"完成年份","t.area":"用地规模",
+    "exp.note":"以上项目体现创始人及核心合作者参与或支持的经验，并不一定是由INDESK法人直接签约实施的合同。",
+    "exp.concept":"概念研究","exp.cnote":"概念研究方案，并非已完工或已获批准的项目。",
+    "area.eyebrow":"服务区域","area.title":"重点服务区域",
+    "area.lead":"INDESK办公室位于北宁省协和，靠近北宁新兴工业园区，团队可迅速抵达现场。",
+    "z1":"Hòa Yên 工业园","z2":"Danh Thắng – Đoan Bái 工业集群","z3":"北宁省其他工业园及工业集群","z.tag1":"重点","z.tag2":"全省",
+    "why.eyebrow":"为什么选择INDESK","why.title":"体现在工作方式中的价值",
+    "w1.t":"聚焦方案","w1.d":"方案可行、决策清晰、可落地实施。",
+    "w2.t":"可靠负责","w2.d":"范围、责任和工作状态公开透明。",
+    "w3.t":"专业执行","w3.d":"系统化组织，成果标准统一。",
+    "w4.t":"创造价值","w4.d":"着眼于进度、质量和开工准备。",
+    "contact.eyebrow":"联系我们","contact.title":"从一次清晰的项目沟通开始",
+    "contact.lead":"每个项目都从准确理解目标、实际条件和下一步工作开始。首次30分钟咨询免费。",
+    "i.addr":"地址","i.phone":"电话","i.tax":"税号",
+    "f.name":"姓名","f.company":"公司","f.contact":"电话或邮箱","f.project":"工业园区及用地面积","f.submit":"提交",
+    "f.ok":"已提交。INDESK将与您联系安排时间。",
+    "f.err":"提交失败。请致电 0823 591 888 或发送邮件至 indesk.company@gmail.com。",
+    "f.need":"请填写姓名及电话或邮箱。",
+    "hero.cap":"3D效果图","exp.also":"其他项目：",
+    "footer.name":"INDESK投资咨询与建设有限责任公司"
+  }
+};
+const nodes = [...document.querySelectorAll("[data-i18n]")];
+nodes.forEach(n => { n.dataset.vi = n.textContent; });
+function setLang(lang){
+  const dict = T[lang] || {};
+  nodes.forEach(n => { n.textContent = lang === "vi" ? n.dataset.vi : (dict[n.dataset.i18n] ?? n.dataset.vi); });
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  try { localStorage.setItem("indesk-lang", lang); } catch (e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+let saved = null;
+try { saved = localStorage.getItem("indesk-lang"); } catch (e) {}
+setLang(saved && (saved === "vi" || T[saved]) ? saved : "vi");
+/* Form gửi về indesk.company@gmail.com qua FormSubmit (cần xác nhận một lần từ hộp thư này). */
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/indesk.company@gmail.com";
+const form = document.getElementById("lead-form");
+const show = id => ["f-ok","f-err","f-need"].forEach(x => { document.getElementById(x).hidden = x !== id; });
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form));
+  if (!data.name.trim() || !data.contact.trim()) { show("f-need"); return; }
+  const btn = form.querySelector("button[type=submit]");
+  btn.disabled = true;
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        _subject: "Yêu cầu tư vấn mới từ indesk.vn",
+        _template: "table",
+        _captcha: "false",
+        "Họ tên": data.name, "Công ty": data.company, "Liên hệ": data.contact,
+        "Dự án": data.project, "Ngôn ngữ trang": document.documentElement.lang
+      })
+    });
+    if (!res.ok) throw new Error(res.status);
+    form.reset(); show("f-ok");
+  } catch (err) {
+    show("f-err");
+  } finally { btn.disabled = false; }
+});
+</script>
+</body>
+</html>

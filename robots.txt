@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://indesk.vn/sitemap.xml
